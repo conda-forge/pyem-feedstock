@@ -11,7 +11,7 @@ source:
 
 build:
   script: {{ PYTHON }} -m pip install . -vv
-  number: 0
+  number: 1
   noarch: python
   entry_points:
     - cfsc.py = pyem.cli.cfsc:_main_
@@ -33,11 +33,11 @@ build:
 
 requirements:
   host:
-    - python >=3.9
+    - python {{ python_min }}
     - pip
     - setuptools
   run:
-    - python >=3.9
+    - python >={{ python_min }}
     - numba >=0.41
     - numpy >=1.14
     - numexpr >=2.8.0
@@ -52,6 +52,8 @@ requirements:
     - starfile >=0.5.2
 
 test:
+  requires:
+    - python {{ python_min }}
   imports:
     - pyem
   commands:
