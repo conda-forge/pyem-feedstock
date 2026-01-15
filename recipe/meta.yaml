@@ -1,5 +1,5 @@
 {% set name = "pyem" %}
-{% set version = "0.67" %}
+{% set version = "0.68" %}
 
 package:
   name: {{ name|lower }}
@@ -7,11 +7,11 @@ package:
 
 source:
   url: https://github.com/asarnow/{{ name }}/archive/refs/tags/v{{ version }}.tar.gz
-  sha256: 7c528aaa831800983bb2e595d1847a5177ae3ec01434af24c303af2d2ff793c3
+  sha256: 105c2fc9860dd927b051ceb90287cf5a4a2664ffa8ae0f95464263570ee733c5
 
 build:
   script: {{ PYTHON }} -m pip install . -vv
-  number: 1
+  number: 0
   noarch: python
   entry_points:
     - cfsc.py = pyem.cli.cfsc:_main_
@@ -39,7 +39,7 @@ requirements:
   run:
     - python >={{ python_min }}
     - numba >=0.41
-    - numpy >=1.14
+    - numpy >=1.26
     - numexpr >=2.8.0
     - scipy >=1.2
     - matplotlib-base >=2.2
